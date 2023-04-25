@@ -117,7 +117,17 @@ function Educatorlogin() {
 
    const clientidd = "256200674836-mpsru41t08o89e3ra7sof08s38qf8e5s.apps.googleusercontent.com"
 
+   const [eyeon, eyeoff] = useState("password")
 
+   const passwordshower = () => {
+      if (eyeon == "password") {
+         eyeoff("")
+      }
+      else {
+         eyeoff("password")
+
+      }
+   }
    return (
       <>
          <Header />
@@ -129,10 +139,12 @@ function Educatorlogin() {
             <section id="login" className="login">
                <div className="container" >
                   <div className="row gy-5 banner-wrap" >
-                     <div className="col-lg-6 text-center">
+                     <div className="col-lg-6 text-center" data-aos="fade-up" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000">
                         <img src={educatorlogin1} className="img-fluid" alt="" />
                      </div>
-                     <div className="col-lg-6 ps-0 ps-lg-5 d-flex flex-column  relative  text-lg-start">
+                     <div className="col-lg-6 ps-0 ps-lg-5 d-flex flex-column  relative  text-lg-start" data-aos="fade-down" data-aos-easing="ease-out-cubic"
+                        data-aos-duration="1000">
                         <div className="login-wrap p-4 p-md-5">
                            <div className="form-title">
                               <h3 className="mb-2 primary-color">Welcome Back !!</h3>
@@ -145,10 +157,10 @@ function Educatorlogin() {
 
                               </div>
                               <div className="form-group">
-                                 <input id="password-field" autoComplete name="password" type="password" onChange={handleChange} className="form-control" value={formValues.password} placeholder="Password" required />
+                                 <input id="password-field" autoComplete name="password" type={eyeon} onChange={handleChange} className="form-control" value={formValues.password} placeholder="Password" required />
                                  <p className="text-danger">{formErrors.password}</p>
 
-                                 <span toggle="#password-field" className="bi bi-eye field-icon toggle-password" ></span>
+                                 <span toggle="#password-field" onClick={() => passwordshower()} className="bi bi-eye field-icon toggle-password" ></span>
                               </div>
 
                               <div className="form-group">
@@ -192,7 +204,7 @@ function Educatorlogin() {
                            <br></br>
 
 
-                           <p className="text-center mb-0" onClick={() => Navigate("/studentsignup")}>Don't Have an Account <span style={{ color: "blue", cursor: "pointer" }} >Create One</span></p>
+                           <p className="text-center mb-0" onClick={() => Navigate("/educatorsignup")}>Don't Have an Account <span style={{ color: "blue", cursor: "pointer" }} >Create One</span></p>
 
                         </div>
                      </div>

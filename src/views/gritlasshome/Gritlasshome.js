@@ -71,7 +71,9 @@ function Gritlasshome() {
   <section id="lass-home" class="lass-home pb-5 ">
       <div class="container" >
 		<div class="row gy-5 banner-wrap" >
-			<div class="col-lg-6 text-center">
+			<div class="col-lg-6 text-center" 
+      // data-aos="zoom-in-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000"
+      >
         <div class="login-wrap" onClick={()=>Navigate("/studentlogin")}>
           <a href="#" alt="Student Login"><img src={student} class="img-fluid w-50 m-auto" alt="" />
           </a>
@@ -80,7 +82,9 @@ function Gritlasshome() {
           </div>	
         </div>
 			</div>
-      <div class="col-lg-6 text-center">
+      <div class="col-lg-6 text-center" 
+      // data-aos="zoom-in-right" data-aos-easing="ease-out-cubic" data-aos-duration="1000"
+      >
         <div class="login-wrap"  onClick={()=>Navigate("/educatorlogin")}>
           <a href="#" alt="Educator Login"><img src={teacher} class="img-fluid w-50 m-auto" alt="" />
           </a>
