@@ -20,6 +20,7 @@ import Aos from 'aos'
 function Studentlogin({ loginUsers, logUsers, logUsersResponse, loading }) {
 
    const { logindetails } = useSelector(logindetailSelector)
+   console.log(logindetails,"loginpage")
    const dispatch = useDispatch()
    const initialValues = { email: "", password: "" };
    const [formValues, setFormValues] = useState(initialValues);
@@ -62,10 +63,10 @@ function Studentlogin({ loginUsers, logUsers, logUsersResponse, loading }) {
 
          axios.get("http://44.202.89.70:8989/api/loginUser/" + formValues.email + "/" + formValues.password)
             .then((res) => {
+               toast.success(res.data.message)
                if (res.data.statusCode == '200') {
                   setFormValues(initialValues);
                   setFormErrors({})
-                  toast.success("Logged in successfully")
                   Navigate("/studentdashboard")
                }
                // console.log(res)
@@ -118,7 +119,8 @@ function Studentlogin({ loginUsers, logUsers, logUsersResponse, loading }) {
       // Navigate("/studentdashboard")
       var data = JSON.stringify(googleData.profileObj)
       localStorage.setItem("getprofiledata", data)
-      window.location = "/studentdashboard";
+      Navigate("/studentdashboard")
+      // window.location = "/studentdashboard";
       // const reqData = {
       //    email: googleData.profileObj.email,
       //    password: googleData.profileObj.name,
@@ -175,7 +177,6 @@ function Studentlogin({ loginUsers, logUsers, logUsersResponse, loading }) {
                               <div className="form-group mt-3">
                                  <input type="text" autoComplete className="form-control" onChange={handleChange} name="email" value={formValues.email} placeholder="Email" required />
                                  <p className="text-danger">{formErrors.email}</p>
-
                               </div>
                               <div className="form-group">
                                  <input id="password-field" autoComplete name="password" type={eyeon} onChange={handleChange} className="form-control" value={formValues.password} placeholder="Password" required />
